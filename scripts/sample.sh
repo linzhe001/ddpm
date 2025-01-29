@@ -12,4 +12,4 @@
 source /SAN/medic/MRpcr/miniconda3/etc/profile.d/conda.sh
 conda activate med
 
-python3 /SAN/medic/MRpcr/med-ddpm/sample.py --inputfolder /SAN/medic/MRpcr/med-ddpm/dataset/whole_head/mask --exportfolder /SAN/medic/MRpcr/med-ddpm/exports/ --input_size 128 --depth_size 128 --num_channels 64 --num_res_blocks 1 --batchsize 1 --num_samples 1 --weightfile /SAN/medic/MRpcr/med-ddpm/model/model_128.pt
+python3 sample.py --inputfolder /mnt/c/Users/14152/ZCH/Dev/datasets/SynRad2023/dataset/ct_2b --exportfolder /mnt/c/Users/14152/ZCH/Dev/datasets/SynRad2023/dataset/mri_2b --input_size 128 --depth_size 128 --num_channels 64 --num_res_blocks 1 --batchsize 1 --num_samples 1 --weightfile model_128.pt

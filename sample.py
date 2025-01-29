@@ -16,7 +16,7 @@ os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-i', '--inputfolder', type=str, default="dataset/whole_head/mask")
+parser.add_argument('-i', '--inputfolder', type=str, default="/mnt/c/Users/14152/ZCH/Dev/datasets/SynRad2023/dataset/sample")
 parser.add_argument('-e', '--exportfolder', type=str, default="exports/")
 parser.add_argument('--input_size', type=int, default=128)
 parser.add_argument('--depth_size', type=int, default=128)
@@ -26,7 +26,7 @@ parser.add_argument('--batchsize', type=int, default=1)
 parser.add_argument('--num_samples', type=int, default=1)
 parser.add_argument('--num_class_labels', type=int, default=3)
 parser.add_argument('--timesteps', type=int, default=250)
-parser.add_argument('-w', '--weightfile', type=str, default="model/model_128.pt")
+parser.add_argument('-w', '--weightfile', type=str, default="model_128.pt")
 args = parser.parse_args()
 
 exportfolder = args.exportfolder
@@ -76,7 +76,8 @@ input_transform = Compose([
 ])
 
 model = create_model(input_size, num_channels, num_res_blocks, in_channels=in_channels, out_channels=out_channels).cuda()
-
+with open("model.txt", "w") as f:
+    f.write(str(model))
 
 diffusion = GaussianDiffusion(
     model,
